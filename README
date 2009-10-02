@@ -1,0 +1,33 @@
+Author: Jaciss (http://github.com/Jaciss)
+License: GNU GPL (http://www.gnu.org/copyleft/gpl.html#TOC1)
+
+File listing (minus stylesheet images):
+/javascript/Frame.js - does most of the work
+/javascript/prototype.js - the prototype javascript library (http://prototypejs.org)
+/models/Frame.php - configuration, non-javascript processing
+/styles/news_sheet/news_sheet.php - default stylesheet, .php to provide ease-of-use
+/views/index.php	- protoframe main page, replace with your own
+/views/home/index.php - 'shortcut' to the above
+/views/example/index.php - example page, replace
+index.php - base page, nothing much there of importance
+favicon.ico - site icon, replace with icon of your choice
+
+
+Setup:
+Unzip protoframe somewhere in your web directory
+Edit /javascript/Frame.js, line two, to reflect the name of the directory the protoframe files are in (default:protoframe)
+	- Note: if the protoframe files are in the root directory this step is not necessary
+
+Customization:
+Edit /models/Frame.php to reflect your site name, slogan, etc.
+Create subdirectories in /views to create new sections, placing an index.php file in each containing content
+Create .php files in above subdirectories to create new pages
+
+Optional:
+Edit /styles/news_sheet/news_sheet.php - the colours, fonts, and font sizes are all defined at the top of the page.
+Edit index.php - the webdev savvy can alter this and the above file to suit
+You can add section-name.js files to the /javascript directory for automatic inclusion when a user visits the 'section-name' subdirectory/area of the site.  These files can define behaviours, or redefine the default behaviours, as well as containing any other javascript snippets you'd like.
+
+Note:
+If you don't want to use .php view files, replace ".php" with the extension of your choice in /javascript/Frame.js and /models/Frame.php
+If you don't want to use PHP at all you'll need to do the above and rewrite models/Frame.php and index.php in the language of your choice.
