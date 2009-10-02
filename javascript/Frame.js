@@ -1,6 +1,6 @@
 var Frame = {
 	subdir: 'protoframe',		//the name of the directory protoframe is in, and the only thing you need to edit
-	debug: 3,	//levels: 0=off, 1=errors, 2=warnings, 3=major events, 4=verbose
+	debug: 4,	//levels: 0=off, 1=errors, 2=warnings, 3=major events, 4=verbose
 	lastURL: window.location.href,
 	uri: '/',
 	section: '',	
@@ -36,24 +36,28 @@ var Frame = {
  		//split the url to find the area we're in and any request strings
 		var urlArgs = url.split('/');
 		Frame.uri = urlArgs[urlArgs.length-1];
-		var module = urlArgs[urlArgs.length-2].sub('#', '', 1);
-		Frame.section = '';
-		if(urlArgs[urlArgs.length-3]) Frame.section = urlArgs[urlArgs.length-3].sub('#', '', 1);
-		
-		Frame.activeModule = module;
+		//if we aren't requesting something specific, get the index page
+		if(Frame.uri==""){
+			Frame.uri = 'index';
+			module='home';
+			Frame.activeModule='home';
+			Frame.section='';
+		}else{
+			var module = urlArgs[urlArgs.length-2].sub('#', '', 1);
+			Frame.section = '';
+			if(urlArgs[urlArgs.length-3]) Frame.section = urlArgs[urlArgs.length-3].sub('#', '', 1);
+			
+			Frame.activeModule = module;
+		}
 		Frame.log("<b>URI: </b>"+Frame.uri+" ("+Frame.section+") and module "+module,1);
  		Frame.log("<b>View:</b> getting " + url,3);
- 		//if we aren't requesting something specific, get the index page
-		if(Frame.uri==""){
-			new Ajax.Updater('content', 'views/index.php');
-			Frame.updateTimer();
-		}else{
-			//otherwise, set the page title based on the URI (but not for silly IE)
-	 		if(!Prototype.Browser.IE) title = document.domain + " : " + Frame.activeModule + " : " + Frame.uri;
-	 		if(!Prototype.Browser.IE) document.title = title.gsub('/',' : ').gsub('_',' ');	//and make it pretty
-	 		//execute or load the area's js (it will automatically initalize when loaded)
-	 		Frame.modules[module] ? Frame.modules[module].execute(Frame.uri) : Frame.loadModule(module);
-		}
+ 		
+		//set the page title based on the URI (but not for silly IE)
+		if(!Prototype.Browser.IE) title = document.domain + " : " + Frame.activeModule + " : " + Frame.uri;
+		if(!Prototype.Browser.IE) document.title = title.gsub('/',' : ').gsub('_',' ');	//and make it pretty
+		//execute or load the area's js (it will automatically initalize when loaded)
+		Frame.modules[module] ? Frame.modules[module].execute(Frame.uri) : Frame.loadModule(module);
+	
 	},
 
 	loadModule: function(module){

@@ -1,9 +1,9 @@
-Author: Jaciss (http://github.com/Jaciss)
-License: GNU GPL (http://www.gnu.org/copyleft/gpl.html#TOC1)
+Author: Jaciss ( http://github.com/Jaciss )
+License: GNU GPL ( http://www.gnu.org/copyleft/gpl.html#TOC1 )
 
 File listing (minus stylesheet images):
 /javascript/Frame.js - does most of the work
-/javascript/prototype.js - the prototype javascript library (http://prototypejs.org)
+/javascript/prototype.js - the prototype javascript library ( http://prototypejs.org )
 /models/Frame.php - configuration, non-javascript processing
 /styles/news_sheet/news_sheet.php - default stylesheet, .php to provide ease-of-use
 /views/index.php	- protoframe main page, replace with your own
@@ -17,6 +17,7 @@ Setup:
 Unzip protoframe somewhere in your web directory
 Edit /javascript/Frame.js, line two, to reflect the name of the directory the protoframe files are in (default:protoframe)
 	- Note: if the protoframe files are in the root directory this step is not necessary
+You should now have a working website that will explain itself a bit more.
 
 Customization:
 Edit /models/Frame.php to reflect your site name, slogan, etc.

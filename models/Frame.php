@@ -10,7 +10,7 @@ class Frame
 {
     public $title = 'proto [ frame ]'; //page title, appears on each page
     public $subtitle = 'coffee induced coding'; //subtitle of the site
-    public $summary = 'This is a demo of protoframe, a tiny AJAX-based framework utilizing <acronym title="PHP Hypertext Processor">PHP</acronym> (optional) and the <a href="http://prototypejs.org">prototype javascript library</a>.  The main foci are behaviour-based interaction and data loading: only once and only when needed.  Default behaviours allow protoframe to work "out of the box" - <a href="javascript/Frame.js">view the javascript</a> or <a href="http://github.com/Jaiss/protoframe">download protoframe</a>.'; //short summary
+    public $summary = 'This is a demo of protoframe, a tiny AJAX-based framework utilizing <acronym title="PHP Hypertext Processor">PHP</acronym> (optional) and the <a href="http://prototypejs.org">prototype javascript library</a>.  The main foci are behaviour-based interaction and data loading: only once and only when needed.  Default behaviours allow protoframe to work "out of the box" - <a href="javascript/Frame.js">view the javascript</a> or <a href="http://github.com/Jaciss/protoframe">download protoframe</a>.'; //short summary
     public $pagetitle = 'Protoframe Demo';
     public $css = 'news_sheet';
     public $css_title;
@@ -23,7 +23,7 @@ class Frame
         $this->css_title = empty($_SESSION['css']) ? $this->css : $_SESSION['css'];
         $this->css = 'styles/' . $this->css_title . '/' . $this->css_title . '.php';
         if ($_SERVER[QUERY_STRING]) {
-            $query_string = htmlspecialchars(striptags($_SERVER[QUERY_STRING]));
+            $query_string = htmlspecialchars(strip_tags($_SERVER[QUERY_STRING]));
             $crumbs = explode('/', $query_string);
             $bread = '?';
             foreach($crumbs as $crumb) {
